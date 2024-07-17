@@ -8,7 +8,7 @@ export class FlashcardsController {
   constructor(private readonly flashcardsService: FlashcardsService) {}
 
   @Post('create/')
-  create(@Body() createFlashcardDto: CreateFlashcardDto) {
+  create(@Body() createFlashcardDto: CreateFlashcardDto):Promise<string> {
     return this.flashcardsService.create(createFlashcardDto);
   }
 
@@ -19,22 +19,22 @@ export class FlashcardsController {
 
   @Get('items/id/:id')
   findById(@Param('id') id: string) {
-    return this.flashcardsService.findOne(+id);
+    return this.flashcardsService.findById(+id);
   }
 
   @Get('items/name/:name')
   findByName(@Param('id') id: string) {
-    return this.flashcardsService.findOne(+id);
+    return this.flashcardsService.findByName(+id);
   }
 
   @Get('items/subj/:subject')
   findBySubject(@Param('id') id: string) {
-    return this.flashcardsService.findOne(+id);
+    return this.flashcardsService.findBySubject(+id);
   }
 
   @Get('items/date/:date')
   findByNextDate(@Param('date') date: Date) {
-    return this.flashcardsService.findOne(+date);
+    return this.flashcardsService.findByDate(+date);
   }
 
   @Patch(':id')
